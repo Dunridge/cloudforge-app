@@ -9,15 +9,17 @@ import SentQuotes from './components/SentQuotes';
 function App() {
   return (
     <Router>
-      <div className='app flex'>
-        <Sidebar/>
-        <Routes>
-          <Route path="/" element={<Dashboard/>} />
-          <Route path="/inventory" element={<Inventory/>} />
-          <Route path="/email-input" element={<EmailInput/>} />
-          <Route path="/draft-quotes" element={<DraftQuotes/>} />
-          <Route path="/sent-quotes" element={<SentQuotes/>} />
-        </Routes>
+      <div className='app flex bg-gray-100 h-screen'>
+        <Sidebar />
+        <div className='pt-[40px] pl-[30px]'>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/inventory" element={<Inventory />} />
+            <Route path="/email-input" element={<EmailInput />} />
+            <Route path="/draft-quotes" element={<DraftQuotes />} />
+            <Route path="/sent-quotes" element={<SentQuotes />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );

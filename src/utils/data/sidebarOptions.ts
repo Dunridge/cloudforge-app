@@ -2,10 +2,6 @@ import { ISidebarOption } from "../interfaces/ISidebarOption";
 
 export const sidebarOptions: ISidebarOption[] = [
     {
-        name: 'Dashboard',
-        path: '/'
-    },
-    {
         name: 'Inventory',
         path: '/inventory'
     },
