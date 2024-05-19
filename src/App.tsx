@@ -1,7 +1,7 @@
 
 function App() {
   return (
-    <div>Cloudforge task</div>
+    <div className="text-red-500">Cloudforge task</div>
   );
 }
 
