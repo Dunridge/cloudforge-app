@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { IEmail } from "../utils/interfaces/IEmail";
+import TestFetchButton from "./TestFetchButton";
 
 export default function Dashboard() {
     const [emails, setEmails] = useState<IEmail[]>([]);
 
     useEffect(() => {
         // fetchEmails(); // (~)
-        tmpPopulateDBWithEmails();
+        // tmpPopulateDBWithEmails(); (~)
     }, []);
 
     useEffect(() => {
@@ -24,7 +25,7 @@ export default function Dashboard() {
         postEmail(email, subject, content);
     }
 
-    const postEmail = async (email: string, subject: string, content: string) => { 
+    const postEmail = async (email: string, subject: string, content: string) => {
         const port = 3000;
         const postUrl = `http://localhost:${port}/api/createRFQFromEmail`;
 
@@ -63,6 +64,12 @@ export default function Dashboard() {
     }
 
     return (
-        <div>Dashboard</div>
+        <>
+            <div>Dashboard</div>
+            <div className="flex gap-[20px]">
+                <TestFetchButton title="Fetch Emails" doAction={fetchEmails} />
+                <TestFetchButton title="Post Emails" doAction={tmpPopulateDBWithEmails} />
+            </div>
+        </>
     );
 }
