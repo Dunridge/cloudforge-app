@@ -6,7 +6,7 @@ import cloudforgeIcon from '../assets/svg/cloudforge-icon.svg';
 export default function Sidebar() {
 
     return (
-        <div className="w-[227px] py-[40px] px-[25px] rounded-tr-lg rounded-br-lg flex flex-col bg-white">
+        <div className="max-w-[227px] min-w-[227px] py-[40px] px-[25px] rounded-tr-lg rounded-br-lg flex flex-col bg-white">
             <Link to={'/'} className="flex gap-[8px] pl-[6px]">
                 <img src={cloudforgeIcon} width={28} height={28} alt="icon"/>
                 <div className="">CloudforgeApp</div>
