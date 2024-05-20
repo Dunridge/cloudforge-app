@@ -13,7 +13,7 @@ export const sidebarOptions: ISidebarOption[] = [
     },
     {
         name: 'Email Input',
-        path: '/email-input',
+        path: '/email-input/emails-list',
         icon: email
     },
     {

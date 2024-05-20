@@ -5,6 +5,8 @@ import Inventory from './components/Inventory';
 import EmailInput from './components/EmailInput';
 import DraftQuotes from './components/DraftQuotes';
 import SentQuotes from './components/SentQuotes';
+import EmailsList from './components/EmailsList';
+import EmailTextInput from './components/EmailTextInput';
 
 function App() {
   return (
@@ -15,7 +17,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/inventory" element={<Inventory />} />
-            <Route path="/email-input" element={<EmailInput />} />
+            
+            <Route path="/email-input" element={<EmailInput />}>
+              <Route path="emails-list" element={<EmailsList />} />
+              <Route path="emailtext-input" element={<EmailTextInput />} />
+            </Route>
+            
             <Route path="/draft-quotes" element={<DraftQuotes />} />
             <Route path="/sent-quotes" element={<SentQuotes />} />
           </Routes>

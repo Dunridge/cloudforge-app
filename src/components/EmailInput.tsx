@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { IEmail } from "../utils/interfaces/IEmail";
 import TestFetchButton from "./TestFetchButton";
+import { Link, Outlet } from "react-router-dom";
 
 export default function EmailInput() {
     const [emails, setEmails] = useState<IEmail[]>([]);
@@ -34,9 +35,16 @@ export default function EmailInput() {
 
     return (
         <div>
-            <div>EmailInput</div>
             {/* <TestFetchButton title="Fetch Emails" doAction={fetchEmails} /> */}
+            <div className="flex gap-[8px]">
+                <Link to="emails-list" className="px-[12px] py-[2px] bg-black text-white"
+                >Emails list</Link>
+                <Link to="emailtext-input" className="px-[12px] py-[2px] bg-black text-white"
+                >Emailtext input</Link>
+            </div>
             {/* TODO: add sub routes to the UIs for the output of emails and then for inputting the email text */}
+
+            <Outlet/>
 
             <div>
                 {/* { JSON.stringify(emails) } */}
