@@ -14,7 +14,17 @@ export const sidebarOptions: ISidebarOption[] = [
     {
         name: 'Email Input',
         path: '/email-input/emails-list',
-        icon: email
+        icon: email,
+        suboptions: [
+            {
+                name: 'Emails list',
+                path: '/email-input/emails-list'
+            },
+            {
+                name: 'Email Text Input',
+                path: '/email-input/emailtext-input'
+            }
+        ]
     },
     {
         name: 'Draft Quotes',

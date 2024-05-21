@@ -13,7 +13,7 @@ export default function Sidebar() {
             </Link>
 
             <div className="mt-[40px] flex flex-col gap-[20px]">
-                {sidebarOptions.map((option) => <SidebarOption key={option.name} name={option.name} path={option.path} icon={option.icon}/>)}
+                {sidebarOptions.map((option) => <SidebarOption key={option.name} name={option.name} path={option.path} icon={option.icon} suboptions={option.suboptions}/>)}
             </div>
         </div>
     )

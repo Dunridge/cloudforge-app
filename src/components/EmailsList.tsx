@@ -37,11 +37,11 @@ export default function EmailsList() {
 
     return (
         <div className="flex h-full flex-grow">
-            <div className="w-[260px] flex flex-col h-full">
+            <div className="w-[260px] flex flex-col h-full bg-white">
                 {emails.map((emailObj) => <InboxEmail {...emailObj}/>)}
             </div>
 
-            <div>
+            <div className="w-full h-full flex justify-center items-center">
                 {selectedEmail.email}
             </div>
         </div>
