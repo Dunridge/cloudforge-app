@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Cloudforge test task 
+Requirements for the task -- https://cloudforge.notion.site/Take-Home-Screen-52af58a7b82e46fa92fe8975101fa539
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Setup 
 
-## Available Scripts
+## BE (cloudforge-services)
 
-In the project directory, you can run:
+Steps: 
+1. Clone the BE project -- https://github.com/Dunridge/cloudforge-services
+2. Set up the environment variables: 
 
-### `npm start`
+```
+DB_CONN_STRING=mongodb+srv://...
+DB_NAME=emails_db
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+EMAILS_COLLECTION_NAME=emails
+RFQS_COLLECTION_NAME=rfqs
+INVENTORY_COLLECTION_NAME=inventory
+SENT_RFQS_COLLECTION_NAME=sent_rfqs
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+OPENAI_API_KEY=sk-proj-...
 
-### `npm test`
+```
+3. Create the collections in your MongoDB account and test the connection 
+4. Run the application with `npm start` 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## FE (cloudforge-app)
 
-### `npm run build`
+Steps: 
+1. Clonse the FE project -- https://github.com/Dunridge/cloudforge-app 
+2. Run the project with `npm start` 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Design
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## FE 
+Implemented the FE for the platform with routing to switch between different views of the application  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## BE 
+Added a Node.js backend with a MongoDB database. Defined the endpoints for the application logic and separated files between controllers (for accessing the database), database (for coonnecting to the MongoDB collections), models (for the application models), routes (for defining the paths to the routes), services (for handling the data)
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## ML
+Added a ChatGPT gpt-3.5-turbo model on the BE to handle the incoming letters and turn them into RFQs
