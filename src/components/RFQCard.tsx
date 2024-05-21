@@ -1,7 +1,7 @@
 import { IRFQCardProps } from "../utils/interfaces/IRFQCardProps";
 import { toast } from "react-toastify";
 
-export default function RFQCard({ emailAdress, emailText, subject }: IRFQCardProps) {
+export default function RFQCard({ emailAdress, emailText, subject, isInSentQuotes }: IRFQCardProps) {
 
     const handleSendRFQEmail = () => {
         debugger;
@@ -48,10 +48,14 @@ export default function RFQCard({ emailAdress, emailText, subject }: IRFQCardPro
                 <span>{emailAdress}</span>
             </div>
             <div dangerouslySetInnerHTML={{ __html: emailText }}></div>
-        
-            <div className="flex flex-col mt-[10px] gap-[8px]">
-                <button onClick={handleSendRFQEmail} className={`px-[12px] py-[2px] bg-black text-white`}>Send RFQ</button>
-            </div>
+
+            {
+                !isInSentQuotes && (
+                    <div className="flex flex-col mt-[10px] gap-[8px]">
+                        <button onClick={handleSendRFQEmail} className={`px-[12px] py-[2px] bg-black text-white`}>Send RFQ</button>
+                    </div>
+                )
+            }
         </div>
     )
 } 

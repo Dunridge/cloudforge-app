@@ -8,7 +8,6 @@ export default function SentQuotes() {
     const [sentQuotes, setSentQuotes] = useState<IRFQ[]>([]);
     const [selectedQuote, setSelectedQuote] = useState<IRFQ>({} as IRFQ);
 
-
     useEffect(() => {
         fetchSentQuotes();
     }, []);
@@ -29,12 +28,6 @@ export default function SentQuotes() {
         } catch (error) {
             console.error(error);
         }
-
-    }
-
-    const handleFetchSentQuotes = () => { 
-        fetchSentQuotes();
-
     }
 
     const handleRFQClick = (_id: string) => {
@@ -46,12 +39,11 @@ export default function SentQuotes() {
         <div className="flex h-full flex-grow">
             <div className="w-[260px] flex flex-col h-full bg-white overflow-y-auto no-scrollbar">
                 { sentQuotes.map(quote => <RFQListItem key={quote._id} handleRFQClick={handleRFQClick} {...quote} />) }
-
             </div>
 
             <div className="w-full h-full flex justify-center items-center">
                 {/* <TestFetchButton doAction={handleFetchSentQuotes} title={"Fetch Sent Quotes"}/> */}
-                <RFQCard {...selectedQuote} />
+                <RFQCard isInSentQuotes={true} {...selectedQuote} />
             </div>
         </div>
     );   
