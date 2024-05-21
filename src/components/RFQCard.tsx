@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 export default function RFQCard({ emailAdress, emailText, subject, isInSentQuotes }: IRFQCardProps) {
     const [price, setPrice] = useState('');
+    const [oderCanBeFilled, setOderCanBeFilled] = useState(false);
 
     const handleSendRFQEmail = () => {
         debugger;
@@ -57,7 +58,11 @@ export default function RFQCard({ emailAdress, emailText, subject, isInSentQuote
                 body: strigifiedBody
             });
             const data = await response.json();
-            if (response.ok && data.canBeFilled) {
+
+            const canBeFilled = data.canBeFilled;
+            setOderCanBeFilled(canBeFilled);
+
+            if (response.ok && canBeFilled) {
                 toast.info('RFQ can be filled');
                 const priceValue = data.price;
                 setPrice(priceValue);
@@ -99,7 +104,9 @@ export default function RFQCard({ emailAdress, emailText, subject, isInSentQuote
             {
                 !isInSentQuotes && (
                     <div className="flex flex-col mt-[10px] gap-[8px]">
-                        <button onClick={handleSendRFQEmail} className={`px-[12px] py-[2px] bg-black text-white`}>Send RFQ</button>
+                        { oderCanBeFilled && (
+                            <button onClick={handleSendRFQEmail} className={`px-[12px] py-[2px] bg-black text-white`}>Send RFQ</button>
+                        )}
                         <button onClick={handleWhetherRFQCanBeFilled} className={`px-[12px] py-[2px] bg-black text-white`}>Check whether RFQ can be filled</button>
                     </div>
                 )
