@@ -7,7 +7,7 @@ export default function InboxEmail({ _id, email, subject, content, handleEmailCl
     }
 
     return (
-        <div onClick={onHandleEmailClick} className="flex flex-col bg-white px-4 py-3 border-b border-r border-gray-200">
+        <div onClick={onHandleEmailClick} className="flex flex-col bg-white px-4 py-3 border-b border-r border-gray-200 cursor-pointer">
             <div>{ subject }</div>
             <div>{ email }</div>
             <div className="truncate">{ content }</div>

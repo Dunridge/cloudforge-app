@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { IEmail } from "../utils/interfaces/IEmail";
 import InboxEmail from "./InboxEmail";
+import EmailCard from "./EmailCard";
 
 export default function EmailsList() {
     const [selectedEmail, setSelectedEmail] = useState<IEmail>({} as IEmail);
@@ -47,7 +48,7 @@ export default function EmailsList() {
             </div>
 
             <div className="w-full h-full flex justify-center items-center">
-                {selectedEmail.subject}
+                <EmailCard {...selectedEmail} />
             </div>
         </div>
     )
