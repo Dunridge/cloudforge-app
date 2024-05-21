@@ -1,9 +1,40 @@
 import { IRFQCardProps } from "../utils/interfaces/IRFQCardProps";
+import { toast } from "react-toastify";
 
 export default function RFQCard({ emailAdress, emailText, subject }: IRFQCardProps) {
 
     const handleSendRFQEmail = () => {
         debugger;
+        sendRFQEmail(emailAdress, emailText, subject);
+    }
+
+    const sendRFQEmail = async (emailAdress: string, emailText: string, subject: string) => {
+        const port = 3000;
+        const postUrl = `http://localhost:${port}/api/sendRFQ`;
+        const requestBody = { emailAdress, emailText, subject }; // this is sent to the endpoint
+        const strigifiedBody = JSON.stringify(requestBody);
+        debugger;
+
+        try {
+            const response = await fetch(postUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: strigifiedBody
+            });
+            const data = await response.json();
+            debugger;
+            if (response.ok && data.result.acknowledged) {
+                debugger;
+                toast.success('RFQ sent successfully');
+            }
+            console.log(data);
+        } catch (error) {
+            console.error(error);
+            debugger;
+        }
+
     }
 
     return (
