@@ -35,14 +35,19 @@ export default function EmailsList() {
         }
     }
 
+    const handleEmailClick = (_id: string) => {
+        const targetEmail = emails.find((email) => email._id === _id)!;
+        setSelectedEmail(targetEmail);
+    }
+
     return (
         <div className="flex h-full flex-grow">
             <div className="w-[260px] flex flex-col h-full bg-white">
-                {emails.map((emailObj) => <InboxEmail {...emailObj}/>)}
+                {emails.map((emailObj) => <InboxEmail key={emailObj._id} handleEmailClick={handleEmailClick} {...emailObj}/>)}
             </div>
 
             <div className="w-full h-full flex justify-center items-center">
-                {selectedEmail.email}
+                {selectedEmail.subject}
             </div>
         </div>
     )
