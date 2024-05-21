@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div className='app flex bg-gray-100 h-screen'>
         <Sidebar />
-        <div className='w-full h-screen py-[40px] px-[30px] '>
+        <div className='w-full h-screen'>
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/inventory" element={<Inventory />} />
