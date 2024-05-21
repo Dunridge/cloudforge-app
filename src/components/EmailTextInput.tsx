@@ -16,10 +16,38 @@ export default function EmailTextInput() {
         // console.log(form);
     }, [form]);
 
-    const handleSubmit = () => {
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
         console.log(form);
+        const content = form.content;
+        const email = form.email;
+        const subject = form.subject;
         debugger;
-        // TODO: move the decalaration of the endpoint call to here
+
+        postEmail(email, subject, content);
+    }
+
+    const postEmail = async (email: string, subject: string, content: string) => {
+        const port = 3000;
+        const postUrl = `http://localhost:${port}/api/postEmail`;
+
+        const requestBody = { email, subject, content };
+        const strigifiedBody = JSON.stringify(requestBody);
+
+        try {
+            const response = await fetch(postUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: strigifiedBody
+            });
+            const data = await response.json();
+            debugger;
+            console.log(data);
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     return (
