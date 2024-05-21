@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { IRFQCardProps } from "../utils/interfaces/IRFQCardProps";
 import { toast } from "react-toastify";
 
 export default function RFQCard({ emailAdress, emailText, subject, isInSentQuotes }: IRFQCardProps) {
+    const [price, setPrice] = useState('');
 
     const handleSendRFQEmail = () => {
         debugger;
@@ -57,6 +59,8 @@ export default function RFQCard({ emailAdress, emailText, subject, isInSentQuote
             const data = await response.json();
             if (response.ok && data.canBeFilled) {
                 toast.info('RFQ can be filled');
+                const priceValue = data.price;
+                setPrice(priceValue);
                 debugger;
             } else {
                 toast.error('RFQ cannot be filled');
@@ -84,6 +88,13 @@ export default function RFQCard({ emailAdress, emailText, subject, isInSentQuote
                 <span>{emailAdress}</span>
             </div>
             <div dangerouslySetInnerHTML={{ __html: emailText }}></div>
+
+            { !!price && (
+                <div className="flex gap-[8px] my-[20px]">
+                    <span className="font-bold">Price:</span>
+                    <span>{ price }</span>
+                </div>
+            ) }
 
             {
                 !isInSentQuotes && (
