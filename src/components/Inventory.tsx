@@ -26,13 +26,13 @@ export default function Inventory() {
     }
 
     return (
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full p-6">
             <div className="font-bold">Inventory</div>
 
             {/* <TestFetchButton title="Fetch Inventory Items" doAction={fetchInventoryItems} /> */}
 
             <div className="flex flex-col gap-[20px] mt-[16px] overflow-y-auto flex-1 no-scrollbar">
-                {items.map((item) => <InvetoryItem key={item.name} name={item.name} quantity={item.quantity} />)}
+                {items.map((item) => <InvetoryItem key={item.name} name={item.name} quantity={item.quantity} price={item.price}/>)}
             </div>
         </div>
     )

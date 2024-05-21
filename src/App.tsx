@@ -5,10 +5,10 @@ import Inventory from './components/Inventory';
 import EmailInput from './components/EmailInput';
 import DraftQuotes from './components/DraftQuotes';
 import SentQuotes from './components/SentQuotes';
-import EmailsList from './components/EmailsList';
-import EmailTextInput from './components/EmailTextInput';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, ToastContainer } from 'react-toastify';
+import EmailsList from './components/EmailsList';
+import EmailTextInput from './components/EmailTextInput';
 
 function App() {
   return (

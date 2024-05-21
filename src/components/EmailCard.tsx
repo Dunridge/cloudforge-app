@@ -45,6 +45,39 @@ export default function EmailCard({ email, subject, content }: IEmailCardProps) 
         });
     }
 
+    const handleGenerateRFQFromEmail = () => {
+        createRFQFromEmail(email, subject, content, emailIsRFQ);
+    }
+
+    const createRFQFromEmail = async (emailAdress: string, subject: string, content: string, isRFQable: boolean) => {
+        const port = 3000;
+        const postUrl = `http://localhost:${port}/api/createRFQFromEmail`;
+        const requestBody = { emailAdress, subject, content, isRFQable }; // this is sent to the endpoint
+        const strigifiedBody = JSON.stringify(requestBody);
+        debugger;
+
+        try {
+            const response = await fetch(postUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: strigifiedBody
+            });
+            const data = await response.json();
+            debugger;
+            if (response.ok && data.result.acknowledged) {
+                debugger;
+                toast.success('RFQ created successfully');
+            }
+            console.log(data);
+        } catch (error) {
+            console.error(error);
+        }
+
+        debugger;
+    }
+
     return (
         <div className="flex flex-col w-[420px] bg-white px-4 py-3 border border-gray-200 rounded rounded-md">
             <div className="flex gap-[8px]">
@@ -59,7 +92,7 @@ export default function EmailCard({ email, subject, content }: IEmailCardProps) 
 
             <div className="flex flex-col mt-[10px] gap-[8px]">
                 <button onClick={handleWeatherEmailIsRFQ} disabled={emailIsRFQ} className={`px-[12px] py-[2px] ${emailIsRFQ ? 'bg-gray-400 text-gray-600 cursor-not-allowed' : 'bg-black text-white'}`}>Check Wheather RFQ</button>
-                { emailIsRFQ && <button className="px-[12px] py-[2px] bg-black text-white">Generate RFQ</button> }
+                { emailIsRFQ && <button onClick={handleGenerateRFQFromEmail} className="px-[12px] py-[2px] bg-black text-white">Generate RFQ</button> }
             </div>
         </div>
     );
