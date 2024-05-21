@@ -7,6 +7,8 @@ import DraftQuotes from './components/DraftQuotes';
 import SentQuotes from './components/SentQuotes';
 import EmailsList from './components/EmailsList';
 import EmailTextInput from './components/EmailTextInput';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce, ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -17,17 +19,32 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/inventory" element={<Inventory />} />
-            
+
             <Route path="/email-input" element={<EmailInput />}>
               <Route path="emails-list" element={<EmailsList />} />
               <Route path="emailtext-input" element={<EmailTextInput />} />
             </Route>
-            
+
             <Route path="/draft-quotes" element={<DraftQuotes />} />
             <Route path="/sent-quotes" element={<SentQuotes />} />
           </Routes>
         </div>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
+
     </Router>
   );
 }

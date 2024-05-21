@@ -3,13 +3,14 @@ import { IEmail } from "../utils/interfaces/IEmail";
 import { emailtextFormInputs } from "../utils/data/emailtextFormInputs";
 import { IEmailInput } from "../utils/interfaces/IEmailInput";
 import EmailInputField from "./EmailInputField";
+import { toast, ToastContainer } from "react-toastify";
+
 
 export default function EmailTextInput() {
     const [form, setForm] = useState<IEmail>({
         email: '',
         subject: '',
-        content: '',
-        _id: '', // TODO: decide what to do with this id 
+        content: ''
     });
 
     useEffect(() => {
@@ -24,7 +25,12 @@ export default function EmailTextInput() {
         const subject = form.subject;
         debugger;
 
-        postEmail(email, subject, content);
+        postEmail(email, subject, content).then(() => {
+            setForm({ email: '', subject: '', content: '' });
+            toast.success("Email sent successfully");
+            
+            // TODO: add a toaster here about the siccess of adding an email 
+        });
     }
 
     const postEmail = async (email: string, subject: string, content: string) => {

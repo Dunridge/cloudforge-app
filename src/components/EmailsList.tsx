@@ -43,7 +43,7 @@ export default function EmailsList() {
 
     return (
         <div className="flex h-full flex-grow">
-            <div className="w-[260px] flex flex-col h-full bg-white">
+            <div className="w-[260px] flex flex-col h-full bg-white overflow-y-auto no-scrollbar">
                 {emails.map((emailObj) => <InboxEmail key={emailObj._id} handleEmailClick={handleEmailClick} {...emailObj}/>)}
             </div>
 
